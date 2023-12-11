@@ -39,7 +39,7 @@ app.get('/users', (request, response) => {
 })
 
 app.post('/users', (request, response) => { // Criando uma nova rota tipo Post
-
+try { // Tratamento de erro (Try Catch) Primeiro abraçamos o código com try, para que caso temos um erro dentro do nosso código, podemos tratar.
     const { name, age } = request.body // Vai chegar algumas informações no meu request.body
 
 
@@ -48,6 +48,9 @@ app.post('/users', (request, response) => { // Criando uma nova rota tipo Post
     users.push(user) // add a informação dentro da nossa variável users
 
     return response.status(201).json(user)
+} catch(err) { // Junto com o try, temos o catch, que podemos lhe dar respostas ao servidor, do jeito que quisermos.
+    return response.status(500).json({error: err.message})
+}
 })
 
 app.put('/users/:id', ckeckUserId, (request, response) => {
