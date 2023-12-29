@@ -1,10 +1,10 @@
 const express = require('express')
 const app = express()
 const port = 3001
-app.use(express.json()) // Avisando o express que eu quero usar como padrão o Json
-import cors from "cors"
+const cors = require('cors')
 const uuid = require('uuid') // Criando uma variável para armazenar a biblioteca
 
+app.use(express.json()) // Avisando o express que eu quero usar como padrão o Json
 app.use(cors())
 
 
